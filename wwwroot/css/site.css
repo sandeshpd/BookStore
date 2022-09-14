@@ -14,10 +14,34 @@ html {
 }
 
 body {
-  background-color: #a6a6a6;
+  background-color: #cccccc;
   margin-bottom: 60px;
 }
 
 nav {
     background-color: #8080ff;
 }
+
+.label-float {
+    float: right;
+    padding: 10px;
+}
+
+.filter-label-main {
+    float: left;
+    position: relative;
+    margin-right: 10px;
+}
+
+/*.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+}*/

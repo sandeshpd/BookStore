@@ -4,12 +4,21 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<script src="~/js/site.js" asp-append-version="true"></script>
 <h1>Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<div class="label-float">
+    <p class="filter-label-main">Language Filters</p>
+    <select class="languages">
+        <option value="#">Select a language...</option>
+        <option value="1">English</option>
+        <option value="2">Marathi</option>
+    </select>
+</div>
+
 <table class="table">
     <thead>
         <tr class="table-light">
