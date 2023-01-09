@@ -11,15 +11,27 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  margin: 0;
 }
 
 body {
   background-color: #cccccc;
-  margin-bottom: 60px;
+}
+
+text-center {
+    text-align: center;
 }
 
 nav {
     background-color: #8080ff;
+    margin: 0px;
+    position: absolute;
+    padding: 0px !important;
+}
+
+.navbar-nav {
+    height: 100%;
+    margin: 0;
 }
 
 .label-float {
@@ -33,6 +45,37 @@ nav {
     margin-right: 10px;
 }
 
+.privacy-p1 {
+    font:700;
+    font-family: 'Footlight MT';
+    font-size: larger;
+}
+
+.privacy-p2 {
+    font: 700;
+    font-family: 'Footlight MT';
+    font-size: larger;
+}
+
+.privacy-p3 {
+    font: 700;
+    font-family: 'Footlight MT';
+    font-size: larger;
+}
+
+.apply-filter {
+    background-color: white;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.apply-filter:hover {
+    background-color: #8080ff;
+    color: white;
+    transition-duration: 0.3s;
+}
 /*.dropdown {
     position: relative;
     display: inline-block;

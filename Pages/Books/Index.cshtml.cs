@@ -10,6 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using BookStore.Data;
 using BookStore.Models;
 using Microsoft.Data.SqlClient;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using BookStore.Migrations;
 
 namespace BookStore.Pages.Books
 {
@@ -22,22 +26,37 @@ namespace BookStore.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get;set; } = default!;
+        public IList<Book> Books { get;set; } = default!;
 
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
+        public string? CurrentFilter { get; set; }
         public string? Language { get; set; }
         public SelectList? Genres { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string? BookGenre { get; set; }
         public string? Condition { get; set; }
-        public async Task OnGetAsync()
+        public IList<Book> Bookslang { get; set; }
+        public async Task OnGetAsync(string? language_options, int? pageIndex)
         {
-            if (_context.Book != null)
+            if(language_options != null)
             {
-                Book = await _context.Book.ToListAsync();
+                pageIndex = 1;
             }
+            else
+            {
+                language_options = CurrentFilter;
+            }    
+
+            CurrentFilter = language_options;
+            IQueryable<Book> BooksLanguage = from bl in _context.Book
+                                             select bl;
+            if (!string.IsNullOrEmpty(language_options))
+            {
+                BooksLanguage = BooksLanguage.Where(bl => bl.Language.Contains(language_options));
+            }
+            Bookslang = await BooksLanguage.AsNoTracking().ToListAsync();
         }
     }
 }

@@ -2,52 +2,59 @@
 @model BookStore.Pages.Books.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Books";
 }
 <script src="~/js/site.js" asp-append-version="true"></script>
 <h1>Index</h1>
 
+<h2>Books</h2>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<div class="label-float">
-    <p class="filter-label-main">Language Filters</p>
-    <select class="languages">
-        <option value="#">Select a language...</option>
-        <option value="1">English</option>
-        <option value="2">Marathi</option>
-    </select>
-</div>
-
+<form asp-page="./Index" method="get">
+    <div class="label-float">
+        <p class="filter-label-main">Language Filters</p>
+        <select class="languages" value="@Model.CurrentFilter">
+            <option value="#">Select a language...</option>
+            <option value="1">English</option>
+            <option value="2">Marathi</option>
+        </select>
+        <button class="apply-filter" name="language">Apply Filter</button>
+        <!--<a asp-page="/.Index">Back to Full List</a>-->
+    </div>
+</form>
+<!--the contents in following table should be displayed according to applied filter from dropdown menu which is specified above-->
+<!--the filter contains available languages of books. Further filter features will be added...-->
 <table class="table">
     <thead>
         <tr class="table-light">
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Title)
+                @Html.DisplayNameFor(model => model.Bookslang[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Author)
+                @Html.DisplayNameFor(model => model.Bookslang[0].Author)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Language)
+                @Html.DisplayNameFor(model => model.Bookslang[0].Language)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].ReleaseDate)
+                @Html.DisplayNameFor(model => model.Bookslang[0].ReleaseDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Genre)
+                @Html.DisplayNameFor(model => model.Bookslang[0].Genre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Price)
+                @Html.DisplayNameFor(model => model.Bookslang[0].Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Condition)
+                @Html.DisplayNameFor(model => model.Bookslang[0].Condition)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Book) {
+@foreach (var item in Model.Bookslang)
+{
         <tr class="table-light">
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
